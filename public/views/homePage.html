@@ -7,6 +7,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -35,7 +36,7 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"
     ></script>
   </head>
-  
+  <!--Coded With Love By Mutiullah Samim-->
   <body>
     <div class="container-fluid h-100">
       <div class="row justify-content-center h-100">
@@ -77,8 +78,8 @@
                 <li>
                   <div class="d-flex bd-highlight">
                     <div class="user_info">
-                      <span>Priyanshu</span>
-                      <p>Priyanshu is online</p>
+                      <span>Shrishti</span>
+                      <p>Shrishti is online</p>
                     </div>
                   </div>
                 </li>
@@ -104,7 +105,7 @@
           </div>
         </div>
         <div class="col-md-8 col-xl-8 chat">
-          <div class="card" id="chatBox">
+          <div class="card" >
             <div class="card-header msg_head">
               <div class="d-flex bd-highlight">
                 <div class="user_info">
@@ -128,7 +129,8 @@
                 </ul>
               </div>
             </div>
-            <div class="card-body msg_card_body">
+            <div class="card-body msg_card_body" id="chatBoxBody"></div>
+            
               <div class="d-flex justify-content-start mb-4">
                 <div class="msg_cotainer">
                   Hi, how are you ?
@@ -140,37 +142,7 @@
                   Hi i am good tnx how about you?
                   <span class="msg_time_send">8:55 AM, Today</span>
                 </div>
-              </div>
-              <div class="d-flex justify-content-start mb-4">
-                <div class="msg_cotainer">
-                  I am good too, thank you for your chat template
-                  <span class="msg_time">9:00 AM, Today</span>
-                </div>
-              </div>
-              <div class="d-flex justify-content-end mb-4">
-                <div class="msg_cotainer_send">
-                  You are welcome
-                  <span class="msg_time_send">9:05 AM, Today</span>
-                </div>
-              </div>
-              <div class="d-flex justify-content-start mb-4">
-                <div class="msg_cotainer">
-                  I am looking for your next templates
-                  <span class="msg_time">9:07 AM, Today</span>
-                </div>
-              </div>
-              <div class="d-flex justify-content-end mb-4">
-                <div class="msg_cotainer_send">
-                  Ok, thank you have a good day
-                  <span class="msg_time_send">9:10 AM, Today</span>
-                </div>
-              </div>
-              <div class="d-flex justify-content-start mb-4">
-                <div class="msg_cotainer">
-                  Bye, see you
-                  <span class="msg_time">9:12 AM, Today</span>
-                </div>
-              </div>
+             
             </div>
             <div class="card-footer">
               <div class="input-group">
@@ -180,7 +152,7 @@
                   ></span>
                 </div>
                 <textarea
-                  id="messageTextArea"
+                id="messageTextArea"
                   class="form-control type_msg"
                   placeholder="Type your message..."
                 ></textarea>
@@ -203,4 +175,3 @@
     });
   </script>
   <script src="/js/chat.js"></script>
-</html>
