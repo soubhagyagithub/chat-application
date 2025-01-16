@@ -24,6 +24,7 @@
       crossorigin="anonymous"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.3/axios.min.js"></script>
     <link
       rel="stylesheet"
       type="text/css"
@@ -103,7 +104,7 @@
           </div>
         </div>
         <div class="col-md-8 col-xl-8 chat">
-          <div class="card">
+          <div class="card" id="chatBox">
             <div class="card-header msg_head">
               <div class="d-flex bd-highlight">
                 <div class="user_info">
@@ -179,11 +180,11 @@
                   ></span>
                 </div>
                 <textarea
-                  name=""
+                  id="messageTextArea"
                   class="form-control type_msg"
                   placeholder="Type your message..."
                 ></textarea>
-                <div class="input-group-append">
+                <div class="input-group-append" id="messageSendBtn">
                   <span class="input-group-text send_btn"
                     ><i class="fas fa-location-arrow"></i
                   ></span>
@@ -201,4 +202,5 @@
       });
     });
   </script>
+  <script src="/js/chat.js"></script>
 </html>
