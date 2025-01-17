@@ -1,5 +1,5 @@
 const path = require("path");
-const User = require("../models/userModel");
+const User = require("../model/userModel");
 const sequelize = require("../util/database");
 exports.getHomePage = async (req, res, next) => {
   try {
