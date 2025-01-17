@@ -7,5 +7,5 @@ router.post(
   authMiddleware.authenticate,
   chatController.sendMessage
 );
-router.get("/getMessages/:param", chatController.getMessages);
+// router.get("/getMessages/:param", chatController.getMessages);
 module.exports = router;
