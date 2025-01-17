@@ -17,4 +17,14 @@ router.get(
   authMiddleware.authenticate,
   groupController.getGroups
 );
+router.post(
+  "/deleteFromGroup",
+  authMiddleware.authenticate,
+  groupController.deleteFromGroup
+);
+router.get(
+  "/groupMembers/:groupName",
+  authMiddleware.authenticate,
+  groupController.groupMembers
+);
 module.exports = router;
