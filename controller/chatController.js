@@ -1,5 +1,9 @@
+const path = require("path");
+const User = require("../model/userModel");
 const Chat = require("../model/chatModel");
 const Group = require("../model/groupModel");
+const S3Services = require("../services/s3Services");
+const sequelize = require("../util/database");
 const { Op } = require("sequelize");
 
 const io = require("socket.io")(5000, {
@@ -10,6 +14,7 @@ const io = require("socket.io")(5000, {
     credentials: true,
   },
 });
+
 io.on("connection", (socket) => {
   socket.on("getMessages", async (groupName) => {
     try {
@@ -30,11 +35,13 @@ exports.sendMessage = async (req, res, next) => {
     const group = await Group.findOne({
       where: { name: req.body.groupName },
     });
+
     await Chat.create({
       name: req.user.name,
       message: req.body.message,
       userId: req.user.id,
       groupId: group.dataValues.id,
+      time: new Date(),
     });
     return res.status(200).json({ message: "Success!" });
   } catch (error) {
@@ -43,10 +50,25 @@ exports.sendMessage = async (req, res, next) => {
   }
 };
 
+exports.uploadFile = async (req, res) => {
+  try {
+    console.log(req.file);
+    const filename = `user-${req.user.id}/${
+      req.file.filename
+    }_${new Date()}.png`;
+    console.log(filename);
+    const fileURL = await S3Services.uploadToS3(req.file.path, filename);
+    res.status(200).json({ success: true, fileURL });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+};
+
 // exports.getMessages = async (req, res, next) => {
 //   try {
 //     const param = req.query.param;
-//     console.log(req.query.groupName);
+
 //     const group = await Group.findOne({
 //       where: { name: req.query.groupName },
 //     });

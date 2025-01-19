@@ -2,10 +2,11 @@ body,
 html {
   height: 100%;
   margin: 0;
-  background: #f5c6aa;
-  background: -webkit-linear-gradient(to right, #fcd8d4, #f8e2cf, #f5c6aa);
-  background: linear-gradient(to right, #fcd8d4, #f8e2cf, #f5c6aa);
+  background: #676868;
+  background: -webkit-linear-gradient(to right, #8e8e8e, #575858, #5d5f5f);
+  background: linear-gradient(to right, #739182, #6ca3bf, #86939c);
 }
+
 .chat {
   margin-top: 40px;
   /* margin-bottom: 35px; */
@@ -138,7 +139,7 @@ html {
   margin-top: 5px;
 }
 .video_cam span {
-  color: white;
+  color: rgb(81, 209, 128);
   font-size: 20px;
   cursor: pointer;
   margin-right: 20px;
@@ -157,7 +158,7 @@ html {
   margin-bottom: auto;
   margin-right: 10px;
   border-radius: 25px;
-  background-color: #b9d7ea;
+  background-color: #8fc4e6;
   padding: 10px;
   position: relative;
 }
@@ -190,12 +191,11 @@ html {
   z-index: 1;
   position: absolute;
   padding: 15px 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(22, 22, 22, 0.5);
   color: white;
   border-radius: 15px;
   top: 30px;
   right: 15px;
-  display: none;
 }
 .action_menu ul {
   list-style: none;
@@ -214,6 +214,22 @@ html {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.2);
 }
+.msg_time {
+  display: block;
+  font-size: 10px;
+  color: rgb(187, 97, 196);
+  text-align: left;
+  margin-top: 5px;
+}
+
+.msg_time_send {
+  display: block;
+  font-size: 10px;
+  color: rgb(98, 190, 167);
+  text-align: right;
+  margin-top: 5px;
+}
+
 @media (max-width: 576px) {
   .contacts_card {
     margin-bottom: 15px !important;

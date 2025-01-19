@@ -126,6 +126,7 @@ async function deleteFromGroup() {
     console.log(error);
   }
 }
+
 async function groupMembers() {
   try {
     const chatBoxBody = document.getElementById("chatBoxBody");
@@ -161,10 +162,12 @@ async function groupMembers() {
     console.log(error);
   }
 }
+
 function logout() {
   localStorage.clear();
   window.location.href = "http://localhost:4000";
 }
+
 groupMembersBtn.addEventListener("click", groupMembers);
 
 createGroupBtn.addEventListener("click", createGroup);
