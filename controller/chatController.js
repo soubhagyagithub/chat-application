@@ -5,6 +5,8 @@ const Group = require("../model/groupModel");
 const S3Services = require("../services/s3Services");
 const sequelize = require("../util/database");
 const { Op } = require("sequelize");
+const ArchivedChat = require("../model/archivedChatModel");
+const cron = require("cron");
 
 const io = require("socket.io")(5000, {
   cors: {
@@ -49,6 +51,62 @@ exports.sendMessage = async (req, res, next) => {
     return res.status(400).json({ message: "Error" });
   }
 };
+
+// Schedule the cron job to run every night at midnight
+const CronJob = cron.CronJob;
+const archiveJob = new CronJob("0 0 * * *", async () => {
+  console.log("Cron job started: Archiving old messages");
+
+  const t = await sequelize.transaction();
+
+  try {
+    // Get all messages older than 1 day
+    const oneDayAgo = new Date();
+    oneDayAgo.setDate(oneDayAgo.getDate() - 1);
+
+    const oldMessages = await Chat.findAll({
+      where: {
+        time: {
+          [Op.lt]: oneDayAgo, // Messages older than 1 day
+        },
+      },
+      transaction: t,
+    });
+
+    if (oldMessages.length === 0) {
+      console.log("No messages to archive");
+      await t.commit();
+      return;
+    }
+
+    // Insert old messages into ArchivedChat table
+    const archivedData = oldMessages.map((message) => ({
+      name: message.name,
+      message: message.message,
+      time: message.time,
+    }));
+
+    await ArchivedChat.bulkCreate(archivedData, { transaction: t });
+
+    // Delete old messages from Chat table
+    await Chat.destroy({
+      where: {
+        time: {
+          [Op.lt]: oneDayAgo,
+        },
+      },
+      transaction: t,
+    });
+
+    await t.commit();
+    console.log("Messages archived and deleted successfully");
+  } catch (error) {
+    console.error("Error archiving messages:", error);
+    await t.rollback();
+  }
+});
+
+archiveJob.start();
 
 exports.uploadFile = async (req, res) => {
   try {
