@@ -5,10 +5,10 @@ const Group = require("../model/groupModel");
 const S3Services = require("../services/s3Services");
 const sequelize = require("../util/database");
 const { Op } = require("sequelize");
-const ArchivedChat = require("../model/archivedChatModel");
+const ArchivedChat = require("../model/archievedModel");
 const cron = require("cron");
 
-const io = require("socket.io")(5000, {
+const io = require("socket.io")(3000, {
   cors: {
     origin: "http://localhost:4000",
     methods: ["GET", "POST"],

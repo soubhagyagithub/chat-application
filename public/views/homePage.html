@@ -131,17 +131,9 @@
             <div class="card-footer">
               <div class="input-group">
                 <div class="input-group-append">
-                  <span class="input-group-text attach_btn"
+                  <span class="input-group-text attach_btn" id="fileUploadBtn"
                     ><i class="fas fa-paperclip"></i
                   ></span>
-                  <button
-                    onclick="sendMedia();"
-                    type="send-media"
-                    id="send-media-group"
-                    class="send-media-btn"
-                  >
-                    UP
-                  </button>
                 </div>
                 <textarea
                   id="messageTextArea"
@@ -167,7 +159,7 @@
       });
     });
   </script>
-  <script src="http://localhost:5000/socket.io/socket.io.js"></script>
+  <script src="http://localhost:3000/socket.io/socket.io.js"></script>
   <script src="/js/group.js"></script>
   <script src="/js/chat.js"></script>
 </html>

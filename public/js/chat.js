@@ -3,7 +3,7 @@ const messageSendBtn = document.getElementById("messageSendBtn");
 const chatBoxBody = document.getElementById("chatBoxBody");
 const uiGroup = document.getElementById("groups");
 const groupNameHeading = document.getElementById("groupNameHeading");
-const socket = io("http://localhost:5000");
+const socket = io("http://localhost:3000");
 
 socket.on("data", function (data) {
   console.log(data);
@@ -156,16 +156,16 @@ function getMessages() {
   });
 }
 
-function sendMedia() {
-  axios
-    .post("http://localhost:4000/upload", { headers: { Authorization: token } })
-    .then((res) => {
-      console.log(res.data.fileURL);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}
+// function sendMedia() {
+//   axios
+//     .post("http://localhost:4000/upload", { headers: { Authorization: token } })
+//     .then((res) => {
+//       console.log(res.data.fileURL);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// }
 
 messageSendBtn.addEventListener("click", messageSend);
 uiGroup.addEventListener("click", activeGroup);

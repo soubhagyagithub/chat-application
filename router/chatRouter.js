@@ -5,15 +5,11 @@ const authMiddleware = require("../middleware/auth");
 
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
-router.post(
-  "/sendMessage",
-  authMiddleware.authenticate,
-  chatController.sendMessage
-);
+router.post("/sendMessage", authMiddleware, chatController.sendMessage);
 
 router.post(
   "/upload",
-  authMiddleware.authenticate,
+  authMiddleware,
   upload.single("image"),
   chatController.uploadFile
 );

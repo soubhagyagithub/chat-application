@@ -13,7 +13,7 @@ const getLoginPage = async (req, res) => {
 };
 
 function generateAccessToken(id, email) {
-  return jwt.sign({ userId: id, email: email }, process.env.JWT_TOKEN);
+  return jwt.sign({ userId: id, email: email }, process.env.JWT_SECRET);
 }
 
 const postUserSignUp = async (req, res) => {
